@@ -98,9 +98,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
           ),
           const SizedBox(height: 20),
-          const Text(
-              "By signing up you accept the Terms of Service and Privacy Policy",
-              style: TextStyle(color: Colors.black38, fontSize: 12)),
+          RichText(
+              text: const TextSpan(
+                  style: TextStyle(color: Colors.grey),
+                  children: <TextSpan>[
+                TextSpan(text: "By signing up you accept the "),
+                TextSpan(
+                    text: "Terms of Service",
+                    style: TextStyle(color: Colors.blue)),
+                TextSpan(text: " and "),
+                TextSpan(
+                    text: "Privacy Policy.",
+                    style: TextStyle(color: Colors.blue)),
+              ])),
           const SizedBox(height: 30),
           RichText(
               text: TextSpan(
