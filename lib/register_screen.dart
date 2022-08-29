@@ -14,7 +14,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool _isObscure = true;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,14 +48,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
             controller: passwordController,
             obscureText: _isObscure,
             decoration: InputDecoration(
-              labelText: "Password",
-              suffixIcon: IconButton(icon: Icon(_isObscure ? Icons.visibility_off : Icons.visibility),
-              onPressed: (){
-                setState(() {
-                  _isObscure = !_isObscure;
-                });
-              },)
-            ),
+                labelText: "Password",
+                suffixIcon: IconButton(
+                  icon: Icon(
+                      _isObscure ? Icons.visibility_off : Icons.visibility),
+                  onPressed: () {
+                    setState(() {
+                      _isObscure = !_isObscure;
+                    });
+                  },
+                )),
           ),
           const SizedBox(
             height: 36,
@@ -85,13 +87,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ElevatedButton.icon(
             onPressed: () async {},
             style: ElevatedButton.styleFrom(
-                primary: Colors.white,
-                minimumSize: const Size.fromHeight(50)),
-            label: const Text("Sign Up with Google", style: TextStyle(color: Colors.black38, fontWeight: FontWeight.bold)),
-            icon: Image.asset("google.png",height: 20, width: 20,),
+                primary: Colors.white, minimumSize: const Size.fromHeight(50)),
+            label: const Text("Sign Up with Google",
+                style: TextStyle(
+                    color: Colors.black38, fontWeight: FontWeight.bold)),
+            icon: Image.asset(
+              "google.png",
+              height: 20,
+              width: 20,
+            ),
           ),
           const SizedBox(height: 20),
-          const Text("By signing up you accept the Terms of Service and Privacy Policy",style: TextStyle(color: Colors.black38, fontSize: 12)),
+          const Text(
+              "By signing up you accept the Terms of Service and Privacy Policy",
+              style: TextStyle(color: Colors.black38, fontSize: 12)),
           const SizedBox(height: 30),
           RichText(
               text: TextSpan(
