@@ -13,7 +13,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final fullNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
+  bool _isObscure = true;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,9 +46,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           TextFormField(
             controller: passwordController,
-            obscureText: true,
-            decoration: const InputDecoration(
+            obscureText: _isObscure,
+            decoration: InputDecoration(
               labelText: "Password",
+              suffixIcon: IconButton(icon: Icon(_isObscure ? Icons.visibility_off : Icons.visibility),
+              onPressed: (){
+                setState(() {
+                  _isObscure = !_isObscure;
+                });
+              },)
             ),
           ),
           const SizedBox(
@@ -81,7 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 primary: Colors.white,
                 minimumSize: const Size.fromHeight(50)),
             label: const Text("Sign Up with Google", style: TextStyle(color: Colors.black38, fontWeight: FontWeight.bold)),
-            icon: const Icon(Icons.web),
+            icon: Image.asset("google.png",height: 20, width: 20,),
           ),
           const SizedBox(height: 20),
           const Text("By signing up you accept the Terms of Service and Privacy Policy",style: TextStyle(color: Colors.black38, fontSize: 12)),

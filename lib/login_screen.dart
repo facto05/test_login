@@ -13,6 +13,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +40,15 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           TextFormField(
             controller: passwordController,
-            obscureText: true,
-            decoration: const InputDecoration(
-              labelText: "Password",
+            obscureText: _isObscure,
+            decoration: InputDecoration(
+                labelText: "Password",
+                suffixIcon: IconButton(onPressed: (){
+                  setState(() {
+                    _isObscure = !_isObscure;
+                  });
+                }, icon: Icon(
+                    _isObscure ? Icons.visibility_off : Icons.visibility))
             ),
           ),
           const SizedBox(
@@ -81,25 +88,25 @@ class _LoginScreenState extends State<LoginScreen> {
             label: const Text("Log in with Google",
                 style: TextStyle(
                     color: Colors.black38, fontWeight: FontWeight.bold)),
-            icon: const Icon(Icons.web),
+            icon: Image.asset("google.png", height: 20, width: 20,),
           ),
           const SizedBox(height: 20),
           RichText(
               text: TextSpan(
                   style: const TextStyle(color: Colors.grey),
                   children: <TextSpan>[
-                const TextSpan(text: "Don't have an account?"),
-                TextSpan(
-                    text: "Sign Up",
-                    style: const TextStyle(color: Colors.blue),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const RegisterScreen();
-                        }));
-                      })
-              ]))
+                    const TextSpan(text: "Don't have an account?"),
+                    TextSpan(
+                        text: "Sign Up",
+                        style: const TextStyle(color: Colors.blue),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () async {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                                  return const RegisterScreen();
+                                }));
+                          })
+                  ]))
         ]),
       ),
     );
